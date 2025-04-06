@@ -1,0 +1,24 @@
+name: A11 Workflow
+on: [push]
+jobs:
+  Test_Case_1:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v4
+     - run: echo "Starting Test_Case_1, In 10 numbers, expected out lowest number"
+     - run: python find_lowest_number.py test_data/test1_input.txt test_data/test1_output.txt
+     - run: git diff test_data/test1_output.txt test_data/test1_expected.txt
+  Test_Case_2:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v4
+     - run: echo "Starting Test_Case_2, In 1 number, expected out one number"
+     - run: python find_lowest_number.py test_data/test2_input.txt test_data/test2_output.txt
+     - run: git diff test_data/test2_output.txt test_data/test2_expected.txt
+  Test_Case_3:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v4
+     - run: echo "Starting Test_Case_3, In empty, epxected out None found"
+     - run: python find_lowest_number.py test_data/test3_input.txt test_data/test3_output.txt
+     - run: git diff test_data/test3_output.txt test_data/test3_expected.txt
